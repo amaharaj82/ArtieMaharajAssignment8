@@ -30,39 +30,76 @@ Likert.Total.Score <- function(dataframe, numeric, vector) {
   
   #need to sum total score across items
  total.scores <- rowSums(new.data.frame)
+ 
+ new.data.frame <-cbind(new.data.frame,total.scores)
   
-  
-  return(total.scores)
+  return(new.data.frame)
  
 }
 ```
 
-2. This is the test of my function
+2. Information for this question:
+The csv file that was created is called: art.data.csv. 
+Items: Q1-Q8
+6 point scale [1,2,3,4,5,6]
+
+
 
 ```{r}
 
-#code to run the dataframe
+#Here is code to run the dataframe
 
 likert.data <- read.csv("art.data.csv")
 
+# I am not sure how, but I got a row of NAs so I had to remove it from the data frame.
+
 likert.data= likert.data[-c(6),] 
 
-#code to run the scale
+#Here is code to run the scale
 
 numeric = 6
 
-# function for to reverse code items Q2, Q4, Q7
+# Here is a function to reverse code items Q2, Q4, Q7
 new.likert.data <- likert.data
   
 new.likert.data[,c(2, 4, 7)] <- abs(new.likert.data[,c(2, 4, 7)] -7)
 
-#total scores for each respondent
+#Here is code to calculate total scores for each respondent
 
 total.scores <- rowSums(new.likert.data)
 
-#add in new column to the new.likert.data dataframe.  
+#Here is code to add in new column to the new.likert.data dataframe.  
 new.likert.data <-cbind(new.likert.data,total.scores)
 
+
+```
+
+3. Use the hsb2 data and ggplot2 to construct a single scatterplot showing the relationship of science scores (response) to math scores (explantory) by gender. 
+
+```{r}
+
+```
+
+4. Again, show the relationship of science scores to math scores by gender, but this time facet on gender to show separate scatterplots 
+
+```{r}
+library(tidyverse)
+
+hsb2 <- read_csv("hsb2.csv")
+hsb2
+
+hsb2$gender <- factor(hsb2$female,
+                   labels = c("male", "female"),
+                   ordered = FALSE)
+
+ggplot(data = hsb2) +
+  geom_point(mapping = aes(x = science, y = math, color = gender))
+
+```
+5.
+Using your ggplot2 cheat sheet and the hsb2 data, create a graph geom that was not mentioed in the lecture. Briefly describe what your graph is illustrating. 
+
+```{r}
 
 ```
 
