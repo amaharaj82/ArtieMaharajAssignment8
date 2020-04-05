@@ -73,14 +73,7 @@ new.likert.data <-cbind(new.likert.data,total.scores)
 
 
 ```
-
-3. Use the hsb2 data and ggplot2 to construct a single scatterplot showing the relationship of science scores (response) to math scores (explantory) by gender. 
-
-```{r}
-
-```
-
-4. Again, show the relationship of science scores to math scores by gender, but this time facet on gender to show separate scatterplots 
+3.Use the hsb2 data and ggplot2 to construct a single scatterplot showing the relationship of science scores (response) to math scores (explantory) by gender.
 
 ```{r}
 library(tidyverse)
@@ -93,13 +86,30 @@ hsb2$gender <- factor(hsb2$female,
                    ordered = FALSE)
 
 ggplot(data = hsb2) +
-  geom_point(mapping = aes(x = science, y = math, color = gender))
+  geom_point(mapping = aes(x = math, y = science, color = gender))
 
 ```
+
+Again, show the relationship of science scores to math scores by gender, but this time facet on gender to show separate scatterplots 
+```{r}
+ggplot(data = hsb2) +
+  geom_point(mapping = aes(x = math, y = science)) +
+  facet_wrap(~ gender)
+```
+
 5.
 Using your ggplot2 cheat sheet and the hsb2 data, create a graph geom that was not mentioed in the lecture. Briefly describe what your graph is illustrating. 
 
 ```{r}
+ggplot(data= hsb2)+ 
+ geom_jitter(mapping = aes(x= math, y= science)) +
+  facet_wrap(~gender)
+
+ggplot(data= hsb2)+ 
+ geom_rug(mapping = aes(x= math, y= science)) +
+  facet_wrap(~gender)
+ 
+
 
 ```
 
