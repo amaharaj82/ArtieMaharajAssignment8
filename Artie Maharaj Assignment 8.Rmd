@@ -9,31 +9,24 @@ This is my assignment 8 for EDRM 718
 1. Write a function that will compute the total score for respondents on a Likert Scale
 
 ```{r}
-Likert.Total.Score <- function(dataframe, numeric, vector) {
+Likert.Total.Score <- function(mydata, numeric, newvector) {
   
   #here is the function for the dataframe
   
-  dataframe <-read.csv("data")
+  mydata <- as.data.frame(mydata)
   
-  #here is the function to call the number of scale items. 
   
-  numeric = somenumber
+  #here is the function for a numeric vector indicating which items should be reversed scored
   
-  #here is the function for a numeric vector indicating which items should be reversed       scored
-  
-  new.data.frame <- dataframe
-  
-  new.data.frame[, c(qx,qy,qz)] <- x-new.data.frame[,c(qx,qy,qz)]
-  
-  #need to update the dataframe to reflect the updated reversed scored items. so this     
-  #should just recode my scores in the dataframe. not sure if i need cbind here. 
+  newvector[, c(qx,qy,qz)] <- abs(newvector[,c(qx,qy,qz)]- numeric +1)
   
   #need to sum total score across items
- total.scores <- rowSums(new.data.frame)
- 
- new.data.frame <-cbind(new.data.frame,total.scores)
   
-  return(new.data.frame)
+   total.scores <- rowSums(newvector)
+ 
+    mydata <-cbind(newvector,total.scores)
+  
+  return(newvector)
  
 }
 ```
@@ -41,9 +34,7 @@ Likert.Total.Score <- function(dataframe, numeric, vector) {
 2. Information for this question:
 The csv file that was created is called: art.data.csv. 
 Items: Q1-Q8
-6 point scale [1,2,3,4,5,6]
-
-
+6 point scale [1-6]
 
 ```{r}
 
@@ -55,21 +46,10 @@ likert.data <- read.csv("art.data.csv")
 
 likert.data= likert.data[-c(6),] 
 
-#Here is code to run the scale
+###Test function
 
-numeric = 6
+Likert.Total.Score(likert.data, 6, c(2,4,7))
 
-# Here is a function to reverse code items Q2, Q4, Q7
-new.likert.data <- likert.data
-  
-new.likert.data[,c(2, 4, 7)] <- abs(new.likert.data[,c(2, 4, 7)] -7)
-
-#Here is code to calculate total scores for each respondent
-
-total.scores <- rowSums(new.likert.data)
-
-#Here is code to add in new column to the new.likert.data dataframe.  
-new.likert.data <-cbind(new.likert.data,total.scores)
 
 
 ```
