@@ -11,14 +11,57 @@ This is my assignment 8 for EDRM 718
 ```{r}
 Likert.Total.Score <- function(dataframe, numeric, vector) {
   
+  #here is the function for the dataframe
   
-  return()
+  dataframe <-read.csv(x=data)
+  
+  #here is the function to call the number of scale items. 
+  
+  numeric = somenumber
+  
+  #here is the function for a numeric vector indicating which items should be reversed       scored
+  
+  new.data.frame <- dataframe
+  
+  new.data.frame[, c(qx,qy,qz)] <- x-new.data.frame[,c(qx,qy,qz)]
+  
+  #need to update the dataframe to reflect the updated reversed scored items. so this     
+  #should just recode my scores in the dataframe. not sure if i need cbind here. 
+  
+  #need to sum total score across items
+ total.scores <- rowSums(new.data.frame)
+  
+  
+  return(total.scores)
+ 
 }
 ```
 
 This is the test of my function
 
 ```{r}
+
+#code to run the dataframe
+
+likert.data <- read.csv("Data/art.data")
+
+
+#code to run the scale
+
+numeric = 6
+
+# function for to reverse code items Q2, Q4, Q7
+new.likert.data <- likert.data
+  
+new.likert.data[, c(Q2, Q4, Q7)] <- 6-new.likert.data[,c(Q2,Q4,Q7)]
+
+#total scores for each respondent
+
+total.scores <- rowSums(new.likert.data)
+
+#add in new column to the new.likert.data dataframe.  
+new.likert.data$total.scores
+
 
 ```
 
