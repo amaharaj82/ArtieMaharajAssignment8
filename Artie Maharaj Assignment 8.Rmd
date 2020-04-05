@@ -9,7 +9,11 @@ This is my assignment 8 for EDRM 718
 1. Write a function that will compute the total score for respondents on a Likert Scale
 
 ```{r}
-
+Likert.Total.Score <- function(dataframe, numeric, vector) {
+  
+  
+  return()
+}
 ```
 
 This is the test of my function
