@@ -13,7 +13,7 @@ Likert.Total.Score <- function(dataframe, numeric, vector) {
   
   #here is the function for the dataframe
   
-  dataframe <-read.csv(x=data)
+  dataframe <-read.csv("data")
   
   #here is the function to call the number of scale items. 
   
@@ -37,14 +37,15 @@ Likert.Total.Score <- function(dataframe, numeric, vector) {
 }
 ```
 
-This is the test of my function
+2. This is the test of my function
 
 ```{r}
 
 #code to run the dataframe
 
-likert.data <- read.csv("Data/art.data")
+likert.data <- read.csv("art.data.csv")
 
+likert.data= likert.data[-c(6),] 
 
 #code to run the scale
 
@@ -53,7 +54,7 @@ numeric = 6
 # function for to reverse code items Q2, Q4, Q7
 new.likert.data <- likert.data
   
-new.likert.data[, c(Q2, Q4, Q7)] <- 6-new.likert.data[,c(Q2,Q4,Q7)]
+new.likert.data[,c(2, 4, 7)] <- abs(new.likert.data[,c(2, 4, 7)] -7)
 
 #total scores for each respondent
 
