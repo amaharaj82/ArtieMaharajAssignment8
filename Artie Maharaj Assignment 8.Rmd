@@ -61,7 +61,7 @@ new.likert.data[,c(2, 4, 7)] <- abs(new.likert.data[,c(2, 4, 7)] -7)
 total.scores <- rowSums(new.likert.data)
 
 #add in new column to the new.likert.data dataframe.  
-new.likert.data$total.scores
+new.likert.data <-cbind(new.likert.data,total.scores)
 
 
 ```
