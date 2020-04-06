@@ -86,7 +86,7 @@ ggplot(data = hsb2) +
 ```
 
 5.
-Using your ggplot2 cheat sheet and the hsb2 data, create a graph geom that was not mentioed in the lecture. Briefly describe what your graph is illustrating. Tried out the jitter geom and the rug geom. 
+Using your ggplot2 cheat sheet and the hsb2 data, create a graph geom that was not mentioed in the lecture. Briefly describe what your graph is illustrating. Tried out the jitter geom and the rug geom.
 
 ```{r}
 ggplot(data= hsb2)+ 
