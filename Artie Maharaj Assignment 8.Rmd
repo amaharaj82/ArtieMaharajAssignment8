@@ -16,17 +16,23 @@ Likert.Total.Score <- function(mydata, numeric, newvector) {
   mydata <- as.data.frame(mydata)
   
   
-  #here is the function for a numeric vector indicating which items should be reversed scored
+#Create a numeric vector for the reversed scored items
   
-  newvector[, c(qx,qy,qz)] <- abs(newvector[,c(qx,qy,qz)]- numeric +1)
+  recode <- abs(mydata[,c(newvector)] - numeric)
   
-  #need to sum total score across items
+  norecode <-mydata[,-newvector]
   
-   total.scores <- rowSums(newvector)
- 
-    mydata <-cbind(newvector,total.scores)
+  recoded.data.frame <-cbind(norecode, recode)
   
-  return(newvector)
+#Add in row sums  
+
+   total.scores <- rowSums(recoded.data.frame)
+  
+#Update the data frame to include total row score
+   
+   Updated.total.score <-cbind(recoded.data.frame, total.scores)
+    
+   return(Updated.total.score)
  
 }
 ```
@@ -38,7 +44,7 @@ Items: Q1-Q8
 
 ```{r}
 
-#Here is code to run the dataframe
+#Here is code to read in the data. 
 
 likert.data <- read.csv("art.data.csv")
 
