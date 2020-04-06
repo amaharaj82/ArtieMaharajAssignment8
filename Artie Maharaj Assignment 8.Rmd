@@ -19,7 +19,7 @@ Likert.Total.Score <- function(mydata, numeric, newvector) {
   
   scalerecode = numeric+1
   
-  recode <- abs(mydata[,c(newvector)] - numeric)
+  recode <- abs(mydata[,c(newvector)] - scalerecode)
   
   norecode <-mydata[,-newvector]
   
@@ -79,7 +79,7 @@ ggplot(data = hsb2) +
 
 ```
 
-Again, show the relationship of science scores to math scores by gender, but this time facet on gender to show separate scatterplots 
+4. Again, show the relationship of science scores to math scores by gender, but this time facet on gender to show separate scatterplots 
 ```{r}
 ggplot(data = hsb2) +
   geom_point(mapping = aes(x = math, y = science)) +
@@ -87,7 +87,9 @@ ggplot(data = hsb2) +
 ```
 
 5.
-Using your ggplot2 cheat sheet and the hsb2 data, create a graph geom that was not mentioed in the lecture. Briefly describe what your graph is illustrating. Tried out the jitter geom and the rug geom.
+Using your ggplot2 cheat sheet and the hsb2 data, create a graph geom that was not mentioed in the lecture. Briefly describe what your graph is illustrating. 
+
+Tried out the jitter geom and the rug geom. The jitter geom is showing the relationship between science and math scores. As math scores increase so do science scores for males and females separately. the spread of scores appears more disaparate for males than females but two plots looks similar. The rug geom also shows the relationship between math and science scores. It looks as if graphs are showing individual cases as well along the x and y axes.  
 
 ```{r}
 ggplot(data= hsb2)+ 
