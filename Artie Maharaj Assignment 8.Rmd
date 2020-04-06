@@ -15,8 +15,9 @@ Likert.Total.Score <- function(mydata, numeric, newvector) {
   
   mydata <- as.data.frame(mydata)
   
-  
 #Create a numeric vector for the reversed scored items
+  
+  scalerecode = numeric+1
   
   recode <- abs(mydata[,c(newvector)] - numeric)
   
