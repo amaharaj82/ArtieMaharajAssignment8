@@ -30,9 +30,9 @@ Likert.Total.Score <- function(mydata, numeric, newvector) {
   
 #Update the data frame to include total row score
    
-   Updated.total.score <-cbind(recoded.data.frame, total.scores)
+   updated.data.frame <-cbind(recoded.data.frame, total.scores)
     
-   return(Updated.total.score)
+   return(updated.data.frame)
  
 }
 ```
@@ -56,7 +56,9 @@ likert.data= likert.data[-c(6),]
 
 Likert.Total.Score(likert.data, 6, c(2,4,7))
 
+likert.function <-Likert.Total.Score(likert.data, 6, c(2,4,7))
 
+write.csv(likert.function)
 
 ```
 3.Use the hsb2 data and ggplot2 to construct a single scatterplot showing the relationship of science scores (response) to math scores (explantory) by gender.
